@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zhamelleden Nuradil | Engineer & Leader</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="background-globes">
+        <div class="globe globe-1"></div>
+        <div class="globe globe-2"></div>
+        <div class="globe globe-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="logo">JN</div>
+        <ul class="nav-links">
+            <li>
+                <a href="#about" data-lang="en">Profile</a>
+                <a href="#about" data-lang="ru" class="hidden">Профиль</a>
+            </li>
+            <li>
+                <a href="#first" data-lang="en">FIRST</a>
+                <a href="#first" data-lang="ru" class="hidden">FIRST</a>
+            </li>
+            <li>
+                <a href="#achievements" data-lang="en">Achievements</a>
+                <a href="#achievements" data-lang="ru" class="hidden">Достижения</a>
+            </li>
+            <li>
+                <a href="#education" data-lang="en">Education</a>
+                <a href="#education" data-lang="ru" class="hidden">Образование</a>
+            </li>
+            <li>
+                <a href="#gallery" data-lang="en">Gallery</a>
+                <a href="#gallery" data-lang="ru" class="hidden">Галерея</a>
+            </li>
+        </ul>
+        <div class="nav-actions">
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
+                <span class="divider">/</span>
+                <button class="lang-btn" onclick="switchLanguage('ru')">RU</button>
+            </div>
+            <a href="#contact" class="btn-contact" data-lang="en">Contact</a>
+            <a href="#contact" class="btn-contact hidden" data-lang="ru">Связаться</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h1 class="fade-in float-slow">
+                    <span data-lang="en">Zhamelleden Nuradil</span>
+                    <span data-lang="ru" class="hidden">Жамеледен Нурадил</span>
+                </h1>
+                <p class="subtitle fade-in-delay-1">
+                    <span data-lang="en">Robotics Engineer • Project Manager • FIRST Program Leader</span>
+                    <span data-lang="ru" class="hidden">Робототехник • Проектный Менеджер • Лидер FIRST</span>
+                </p>
+                <div class="manifesto fade-in-delay-2 glass-card">
+                    <span data-lang="en">"I believe not in innate talent, but in systematic work and continuous
+                        development. I am not afraid of complex challenges — if I lack skills, I learn them from scratch
+                        and deliver results."</span>
+                    <span data-lang="ru" class="hidden">«Я верю не во врождённый талант, а в системную работу и
+                        постоянное развитие. Я не боюсь сложных задач — если не хватает навыков, осваиваю их с нуля и
+                        довожу дело до результата.»</span>
+                </div>
+            </div>
+            <div class="scroll-indicator fade-in-delay-3">
+                <span data-lang="en">View Portfolio</span>
+                <span data-lang="ru" class="hidden">Смотреть Портфолио</span>
+                <div class="mouse"></div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="about" class="content-section">
+            <div class="container">
+                <h2 class="section-title fade-on-scroll">
+                    <span data-lang="en">Personal Profile</span>
+                    <span data-lang="ru" class="hidden">Личный Профиль</span>
+                </h2>
+                <div class="glass-card hover-lift fade-on-scroll">
+                    <p class="about-text">
+                        <span data-lang="en">
+                            I am a hands-on engineer and project leader with 2–3 years of dedicated experience in the
+                            FIRST program.
+                            My focus is on technical excellence, team leadership, and turning abstract ideas into
+                            functional robotic systems.
+                            Currently coordinating volunteer efforts and leading international project defenses.
+                        </span>
+                        <span data-lang="ru" class="hidden">
+                            Я инженер-практик и проект-лидер с 2–3 годами опыта в программе FIRST.
+                            Мой фокус — техническое совершенство, лидерство в команде и превращение абстрактных идей в
+                            работающие робототехнические системы.
+                            В настоящее время координирую работу волонтёров и руководил международной защитой проектов.
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FIRST Competitions Section -->
+        <section id="first" class="content-section">
+            <div class="container">
+                <h2 class="section-title fade-on-scroll">
+                    <span data-lang="en">FIRST Competitions</span>
+                    <span data-lang="ru" class="hidden">Соревнования FIRST</span>
+                </h2>
+                <div class="grid-2">
+                    <!-- Champion's Award -->
+                    <div class="cert-card glass-card hover-lift fade-on-scroll">
+                        <div class="cert-visual gradient-1">
+                            <h3>Champion’s Award</h3>
+                            <p data-lang="en">Central Asia FIRST Championship</p>
+                            <p data-lang="ru" class="hidden">Central Asia FIRST Championship</p>
+                        </div>
+                        <div class="cert-info">
+                            <span class="cert-source" data-lang="en">Overall Excellence</span>
+                            <span class="cert-source hidden" data-lang="ru">Абсолютное Превосходство</span>
+                            <span class="cert-year">2024</span>
+                        </div>
+                    </div>
+
+                    <!-- Robot Performance Award -->
+                    <div class="cert-card glass-card hover-lift fade-on-scroll delay-1">
+                        <div class="cert-visual gradient-2">
+                            <h3>Robot Performance Finalist</h3>
+                            <p data-lang="en">Daryn FIRST LEGO League</p>
+                            <p data-lang="ru" class="hidden">Daryn FIRST LEGO League</p>
+                        </div>
+                        <div class="cert-info">
+                            <span class="cert-source" data-lang="en">Technical Innovation</span>
+                            <span class="cert-source hidden" data-lang="ru">Технические Инновации</span>
+                            <span class="cert-year">2024</span>
+                        </div>
+                    </div>
+
+                    <!-- Core Values Award -->
+                    <div class="cert-card glass-card hover-lift fade-on-scroll delay-2">
+                        <div class="cert-visual gradient-3">
+                            <h3>Core Values Award Winner</h3>
+                            <p data-lang="en">Central Asia FIRST Championship</p>
+                            <p data-lang="ru" class="hidden">Central Asia FIRST Championship</p>
+                        </div>
+                        <div class="cert-info">
+                            <span class="cert-source" data-lang="en">Teamwork & Leadership</span>
+                            <span class="cert-source hidden" data-lang="ru">Командная Работа</span>
+                            <span class="cert-year">2024</span>
+                        </div>
+                    </div>
+
+                    <!-- Breakthrough Award -->
+                    <div class="cert-card glass-card hover-lift fade-on-scroll delay-3">
+                        <div class="cert-visual gradient-4">
+                            <h3>Breakthrough Award</h3>
+                            <p data-lang="en">Regional Qualifiers</p>
+                            <p data-lang="ru" class="hidden">Regional Qualifiers</p>
+                        </div>
+                        <div class="cert-info">
+                            <span class="cert-source" data-lang="en">Rising Potential</span>
+                            <span class="cert-source hidden" data-lang="ru">Потенциал Роста</span>
+                            <span class="cert-year">2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- International Qualifications -->
+        <section id="achievements" class="content-section">
+            <div class="container">
+                <h2 class="section-title fade-on-scroll">
+                    <span data-lang="en">International Qualifications</span>
+                    <span data-lang="ru" class="hidden">Международные Квалификации</span>
+                </h2>
+                <div class="glass-card hover-lift fade-on-scroll">
+                    <h3>
+                        <span data-lang="en">Global Representation</span>
+                        <span data-lang="ru" class="hidden">Глобальное Представительство</span>
+                    </h3>
+                    <p class="highlight">
+                        <span data-lang="en">Successfully qualified for international stages:</span>
+                        <span data-lang="ru" class="hidden">Успешно квалифицировался на международные этапы:</span>
+                    </p>
+                    <div class="tags">
+                        <span class="tag" data-lang="en">Dubai FLL Quota</span>
+                        <span class="tag hidden" data-lang="ru">Квота Dubai FLL</span>
+
+                        <span class="tag" data-lang="en">Hong Kong International</span>
+                        <span class="tag hidden" data-lang="ru">Hong Kong International</span>
+
+                        <span class="tag" data-lang="en">China Robotics Invite</span>
+                        <span class="tag hidden" data-lang="ru">China Robotics Invite</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Internships -->
+        <section id="education" class="content-section">
+            <div class="container">
+                <h2 class="section-title fade-on-scroll">
+                    <span data-lang="en">Education & Experience</span>
+                    <span data-lang="ru" class="hidden">Образование и Опыт</span>
+                </h2>
+                <div class="timeline">
+                    <!-- Leadership -->
+                    <div class="timeline-item glass-card hover-lift fade-on-scroll">
+                        <div class="timeline-header">
+                            <span class="role" data-lang="en">Head Volunteer</span>
+                            <span class="role hidden" data-lang="ru">Head Volunteer</span>
+                            <span class="date">2025</span>
+                        </div>
+                        <h3>Digital Bridge 2025</h3>
+                        <p>
+                            <span data-lang="en">Led volunteer coordination for the largest IT forum in Central Asia.
+                                Managed teams, logistics, and crisis resolution.</span>
+                            <span data-lang="ru" class="hidden">Координировал работу волонтёров на крупнейшем IT-форуме
+                                Центральной Азии. Управлял командами, логистикой и решением кризисных ситуаций.</span>
+                        </p>
+                    </div>
+
+                    <!-- Internships -->
+                    <div class="timeline-item glass-card hover-lift fade-on-scroll">
+                        <div class="timeline-header">
+                            <span class="role" data-lang="en">Internship</span>
+                            <span class="role hidden" data-lang="ru">Стажировка</span>
+                            <span class="date">2024-2025</span>
+                        </div>
+                        <h3>USTEM Foundation</h3>
+                        <p>
+                            <span data-lang="en">Organized large-scale FIRST events, managed technical setups, and
+                                facilitated project defenses.</span>
+                            <span data-lang="ru" class="hidden">Организовывал масштабные мероприятия FIRST, управлял
+                                техническим оснащением и курировал защиту проектов.</span>
+                        </p>
+                    </div>
+
+                    <!-- Tech Education -->
+                    <div class="timeline-item glass-card hover-lift fade-on-scroll">
+                        <div class="timeline-header">
+                            <span class="role" data-lang="en">Startup Academy</span>
+                            <span class="role hidden" data-lang="ru">Startup Academy</span>
+                            <span class="date">
+                                <span data-lang="en">Completed</span>
+                                <span data-lang="ru" class="hidden">Завершено</span>
+                            </span>
+                        </div>
+                        <h3>Astana Hub</h3>
+                        <p>
+                            <span data-lang="en">Completed intensive courses in Startup Development, Low Code, and No
+                                Code platforms.</span>
+                            <span data-lang="ru" class="hidden">Прошел интенсивные курсы по развитию стартапов, а также
+                                платформам Low Code и No Code.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="content-section">
+            <div class="container">
+                <h2 class="section-title fade-on-scroll">
+                    <span data-lang="en">Certificates & Events</span>
+                    <span data-lang="ru" class="hidden">Сертификаты и Мероприятия</span>
+                </h2>
+                <p class="section-subtitle fade-on-scroll">
+                    <span data-lang="en">Verified achievements and participation records</span>
+                    <span data-lang="ru" class="hidden">Подтверждённые достижения и участие</span>
+                </p>
+
+                <!-- Certificates Grid -->
+                <h3 class="gallery-group-title fade-on-scroll">
+                    <span data-lang="en">Official Certificates</span>
+                    <span data-lang="ru" class="hidden">Официальные Сертификаты</span>
+                </h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item glass-card hover-lift fade-on-scroll">
+                        <img src="assets/certificates/5341516664598031713.jpg" alt="FIRST Championship Certificate"
+                            loading="lazy">
+                        <div class="gallery-caption">
+                            <p class="caption-title" data-lang="en">FIRST Championship</p>
+                            <p class="caption-title hidden" data-lang="ru">Чемпионат FIRST</p>
+                            <p class="caption-detail" data-lang="en">Role: Team Leader</p>
+                            <p class="caption-detail hidden" data-lang="ru">Роль: Лидер команды</p>
+                            <p class="caption-result" data-lang="en">Result: Champion's Award</p>
+                            <p class="caption-result hidden" data-lang="ru">Результат: Champion's Award</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item glass-card hover-lift fade-on-scroll delay-1">
+                        <img src="assets/certificates/5341516664598031714.jpg" alt="Core Values Award" loading="lazy">
+                        <div class="gallery-caption">
+                            <p class="caption-title" data-lang="en">Central Asia FIRST</p>
+                            <p class="caption-title hidden" data-lang="ru">Central Asia FIRST</p>
+                            <p class="caption-detail" data-lang="en">Role: Team Member</p>
+                            <p class="caption-detail hidden" data-lang="ru">Роль: Участник команды</p>
+                            <p class="caption-result" data-lang="en">Result: Core Values Award</p>
+                            <p class="caption-result hidden" data-lang="ru">Результат: Core Values Award</p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <!-- PDF Certificates Grid -->
+                <h3 class="gallery-group-title fade-on-scroll">
+                    <span data-lang="en">PDF Certificates</span>
+                    <span data-lang="ru" class="hidden">PDF Сертификаты</span>
+                </h3>
+                <div class="gallery-grid">
+                    <!-- Dubai FLL Quota Confirmation -->
+                    <div class="gallery-item gallery-item-pdf glass-card hover-lift fade-on-scroll">
+                        <div class="pdf-icon-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                            <span class="pdf-badge">PDF</span>
+                        </div>
+                        <div class="gallery-caption">
+                            <p class="caption-title" data-lang="en">Dubai FLL Quota Confirmation</p>
+                            <p class="caption-title hidden" data-lang="ru">Подтверждение Квоты в Дубай</p>
+                            <p class="caption-detail" data-lang="en">Organization: FIRST LEGO League</p>
+                            <p class="caption-detail hidden" data-lang="ru">Организация: FIRST LEGO League</p>
+                            <p class="caption-result" data-lang="en">Type: Official Qualification</p>
+                            <p class="caption-result hidden" data-lang="ru">Тип: Официальная Квалификация</p>
+                            <div class="pdf-actions">
+                                <a href="assets/certificates/2024_FLL_Dubai_Quota_Confirmation_Armada.pdf"
+                                    target="_blank" rel="noopener" class="pdf-btn">
+                                    <span data-lang="en">View PDF</span>
+                                    <span data-lang="ru" class="hidden">Открыть PDF</span>
+                                </a>
+                                <a href="assets/certificates/2024_FLL_Dubai_Quota_Confirmation_Armada.pdf"
+                                    download class="pdf-btn pdf-btn-secondary">
+                                    <span data-lang="en">Download</span>
+                                    <span data-lang="ru" class="hidden">Скачать</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nuradil Zhameleden Certificate 1 -->
+                    <div class="gallery-item gallery-item-pdf glass-card hover-lift fade-on-scroll delay-1">
+                        <div class="pdf-icon-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                            <span class="pdf-badge">PDF</span>
+                        </div>
+                        <div class="gallery-caption">
+                            <p class="caption-title" data-lang="en">Official Certificate</p>
+                            <p class="caption-title hidden" data-lang="ru">Официальный Сертификат</p>
+                            <p class="caption-detail" data-lang="en">Recipient: Nuradil Zhameleden</p>
+                            <p class="caption-detail hidden" data-lang="ru">Получатель: Нурадил Жамеледен</p>
+                            <p class="caption-result" data-lang="en">Type: Achievement Certificate</p>
+                            <p class="caption-result hidden" data-lang="ru">Тип: Сертификат Достижений</p>
+                            <div class="pdf-actions">
+                                <a href="assets/certificates/Nuradil Zhameleden.pdf" target="_blank" rel="noopener"
+                                    class="pdf-btn">
+                                    <span data-lang="en">View PDF</span>
+                                    <span data-lang="ru" class="hidden">Открыть PDF</span>
+                                </a>
+                                <a href="assets/certificates/Nuradil Zhameleden.pdf" download
+                                    class="pdf-btn pdf-btn-secondary">
+                                    <span data-lang="en">Download</span>
+                                    <span data-lang="ru" class="hidden">Скачать</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nuradil Zhameleden Certificate 2 -->
+                    <div class="gallery-item gallery-item-pdf glass-card hover-lift fade-on-scroll delay-2">
+                        <div class="pdf-icon-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                            <span class="pdf-badge">PDF</span>
+                        </div>
+                        <div class="gallery-caption">
+                            <p class="caption-title" data-lang="en">Official Document</p>
+                            <p class="caption-title hidden" data-lang="ru">Официальный Документ</p>
+                            <p class="caption-detail" data-lang="en">Recipient: Nuradil Zhameleden</p>
+                            <p class="caption-detail hidden" data-lang="ru">Получатель: Нурадил Жамеледен</p>
+                            <p class="caption-result" data-lang="en">Type: Certification Document</p>
+                            <p class="caption-result hidden" data-lang="ru">Тип: Документ Сертификации</p>
+                            <div class="pdf-actions">
+                                <a href="assets/certificates/Nuradil Zhameleden .docx.pdf" target="_blank"
+                                    rel="noopener" class="pdf-btn">
+                                    <span data-lang="en">View PDF</span>
+                                    <span data-lang="ru" class="hidden">Открыть PDF</span>
+                                </a>
+                                <a href="assets/certificates/Nuradil Zhameleden .docx.pdf" download
+                                    class="pdf-btn pdf-btn-secondary">
+                                    <span data-lang="en">Download</span>
+                                    <span data-lang="ru" class="hidden">Скачать</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event Photos Grid -->
+                <h3 class="gallery-group-title fade-on-scroll">
+                    <span data-lang="en">Event Participation</span>
+                    <span data-lang="ru" class="hidden">Участие в Мероприятиях</span>
+                </h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item glass-card hover-lift fade-on-scroll">
+                        <img src="assets/certificates/5341516664598031719.jpg" alt="FIRST Competition Event"
+                            loading="lazy">
+                        <div class="gallery-caption">
+                            <p class="caption-title" data-lang="en">FIRST Competition</p>
+                            <p class="caption-title hidden" data-lang="ru">Соревнование FIRST</p>
+                            <p class="caption-detail" data-lang="en">Role: Competitor</p>
+                            <p class="caption-detail hidden" data-lang="ru">Роль: Участник</p>
+                            <p class="caption-result" data-lang="en">Event: Regional Qualifier</p>
+                            <p class="caption-result hidden" data-lang="ru">Мероприятие: Региональный отбор</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item glass-card hover-lift fade-on-scroll delay-1">
+                        <img src="assets/certificates/5341516664598031720.jpg" alt="Team Photo" loading="lazy">
+                        <div class="gallery-caption">
+                            <p class="caption-title" data-lang="en">Team Armada</p>
+                            <p class="caption-title hidden" data-lang="ru">Команда Armada</p>
+                            <p class="caption-detail" data-lang="en">Role: Team Leader</p>
+                            <p class="caption-detail hidden" data-lang="ru">Роль: Лидер команды</p>
+                            <p class="caption-result" data-lang="en">Event: Championship</p>
+                            <p class="caption-result hidden" data-lang="ru">Мероприятие: Чемпионат</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item glass-card hover-lift fade-on-scroll delay-2">
+                        <img src="assets/certificates/5460745338987082573.jpg" alt="Volunteering Event" loading="lazy">
+                        <div class="gallery-caption">
+                            <p class="caption-title" data-lang="en">Digital Bridge 2025</p>
+                            <p class="caption-title hidden" data-lang="ru">Digital Bridge 2025</p>
+                            <p class="caption-detail" data-lang="en">Role: Head Volunteer</p>
+                            <p class="caption-detail hidden" data-lang="ru">Роль: Head Volunteer</p>
+                            <p class="caption-result" data-lang="en">Event: IT Forum</p>
+                            <p class="caption-result hidden" data-lang="ru">Мероприятие: IT-форум</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item glass-card hover-lift fade-on-scroll delay-3">
+                        <img src="assets/certificates/5471980238994014291.jpg" alt="USTEM Foundation Event"
+                            loading="lazy">
+                        <div class="gallery-caption">
+                            <p class="caption-title" data-lang="en">USTEM Foundation</p>
+                            <p class="caption-title hidden" data-lang="ru">USTEM Foundation</p>
+                            <p class="caption-detail" data-lang="en">Role: Intern</p>
+                            <p class="caption-detail hidden" data-lang="ru">Роль: Стажёр</p>
+                            <p class="caption-result" data-lang="en">Event: FIRST Organization</p>
+                            <p class="caption-result hidden" data-lang="ru">Мероприятие: Организация FIRST</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="footer-section">
+            <div class="footer-content glass-card fade-on-scroll">
+                <h2>
+                    <span data-lang="en">Get In Touch</span>
+                    <span data-lang="ru" class="hidden">Связаться</span>
+                </h2>
+
+                <div class="contact-icons">
+                    <!-- Phone -->
+                    <a href="tel:+77022697466" class="contact-icon-link" aria-label="Phone">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                        <span class="icon-tooltip" data-lang="en">Phone</span>
+                        <span class="icon-tooltip hidden" data-lang="ru">Телефон</span>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:zhameledenn@gmail.com" class="contact-icon-link" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span class="icon-tooltip" data-lang="en">Email</span>
+                        <span class="icon-tooltip hidden" data-lang="ru">Почта</span>
+                    </a>
+
+                    <!-- Telegram -->
+                    <a href="https://t.me/Zhameleden" target="_blank" rel="noopener" class="contact-icon-link"
+                        aria-label="Telegram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                        <span class="icon-tooltip" data-lang="en">Telegram</span>
+                        <span class="icon-tooltip hidden" data-lang="ru">Telegram</span>
+                    </a>
+                </div>
+            </div>
+            <footer>
+                <p>
+                    <span data-lang="en">Contact: <a href="mailto:zhameledenn@gmail.com">zhameledenn@gmail.com</a> •
+                        &copy; 2026 Zhamelleden Nuradil. All rights reserved.</span>
+                    <span data-lang="ru" class="hidden">Контакты: <a
+                            href="mailto:zhameledenn@gmail.com">zhameledenn@gmail.com</a> • &copy; 2026 Жамеледен
+                        Нурадил. Все права защищены.</span>
+                </p>
+            </footer>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
