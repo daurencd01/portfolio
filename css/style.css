@@ -36,6 +36,60 @@ body {
     position: relative;
 }
 
+/* ============================================
+   PREMIUM ANIMATED BACKGROUND (PARTICLES)
+   ============================================ */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+    /* Subtle gradient to enhance depth without changing theme */
+    background: radial-gradient(circle at 50% 50%, #12121e 0%, #0b0b14 80%);
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+/* Smooth, non-distracting float animation */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: var(--opacity);
+    }
+
+    50% {
+        transform: translate(var(--tx), var(--ty));
+        opacity: calc(var(--opacity) * 0.5);
+    }
+
+    90% {
+        opacity: var(--opacity);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .particle {
+        animation: none !important;
+        opacity: 0.1;
+    }
+}
+
 h1,
 h2,
 h3,
@@ -52,6 +106,78 @@ a {
 
 ul {
     list-style: none;
+}
+
+/* ============================================
+   LIGHTWEIGHT PRELOADER
+   ============================================ */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(11, 11, 20, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.preloader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.preloader-dot {
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.8), rgba(144, 19, 254, 0.8));
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(74, 144, 226, 0.5);
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.6;
+    }
+}
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    .preloader-dot {
+        animation: none;
+    }
+
+    .preloader {
+        transition: none;
+    }
+}
+
+/* Smooth Scrolling Enhancement */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
 }
 
 /* Background Animation */
@@ -119,7 +245,7 @@ ul {
     transform: translateX(-50%);
     width: 90%;
     max-width: 1200px;
-    padding: 1rem 2rem;
+    padding: 0.8rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -129,12 +255,42 @@ ul {
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     z-index: 1000;
-    transition: var(--transition-fast);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-nav:hover {
     background: rgba(11, 11, 20, 0.8);
     border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Smart Sticky Header States */
+.glass-nav.scrolled {
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: rgba(11, 11, 20, 0.98);
+    padding: 0.5rem 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Hide on scroll down */
+.glass-nav.nav-hidden {
+    transform: translateY(-100%);
+}
+
+/* Ensure mobile menu keeps nav visible */
+body.nav-open .glass-nav {
+    transform: none !important;
+    top: 0;
+    width: 100%;
+    border-radius: 0;
+    /* Force full width when menu open for consistency */
 }
 
 .logo {
@@ -144,6 +300,15 @@ ul {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     cursor: default;
+    z-index: 1001;
+    /* Above mobile menu */
+}
+
+/* Nav Menu Wrapper (Desktop) */
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
 }
 
 .nav-links {
@@ -151,14 +316,15 @@ ul {
     gap: 2rem;
 }
 
-.nav-links a {
+.nav-link {
     font-size: 0.9rem;
     opacity: 0.7;
     position: relative;
     padding-bottom: 4px;
+    transition: var(--transition-fast);
 }
 
-.nav-links a::after {
+.nav-link::after {
     content: '';
     position: absolute;
     width: 0;
@@ -169,11 +335,14 @@ ul {
     transition: width 0.3s ease;
 }
 
-.nav-links a:hover {
+.nav-link:hover,
+.nav-link.active {
     opacity: 1;
+    color: var(--text-primary);
 }
 
-.nav-links a:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
     width: 100%;
 }
 
@@ -226,6 +395,29 @@ ul {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Hamburger (Hidden on Desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    /* Above menu */
+    padding: 0;
+}
+
+.hamburger .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
 /* Hero Section */
 .hero-section {
     min-height: 100vh;
@@ -239,10 +431,78 @@ ul {
     /* Offset for calc */
 }
 
-.hero-content {
-    max-width: 800px;
+/* ============================================
+   HERO PROFILE SECTION
+   ============================================ */
+
+/* Hero Profile Container - Responsive Layout */
+.hero-profile-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto 3rem;
     z-index: 10;
-    margin-bottom: 2rem;
+}
+
+/* Profile Photo Wrapper */
+.profile-photo-wrapper {
+    flex-shrink: 0;
+}
+
+.profile-photo {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-photo:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(74, 144, 226, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+/* Hero Content - Text Section */
+.hero-content {
+    flex: 1;
+    min-width: 0;
+    z-index: 10;
+}
+
+/* Mobile Layout - Photo on Top */
+@media (max-width: 968px) {
+    .hero-profile-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .profile-photo {
+        width: 220px;
+        height: 220px;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 800px;
+    }
+
+    .manifesto {
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-photo {
+        width: 180px;
+        height: 180px;
+    }
 }
 
 h1 {
@@ -443,6 +703,61 @@ h1 {
     z-index: 2;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+}
+
+/* Certificate Cards with Real Images */
+.cert-visual-image {
+    height: 300px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.cert-visual-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    position: relative;
+    z-index: 1;
+    opacity: 1;
+}
+
+.cert-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.6) 70%, transparent 100%);
+    padding: 1.5rem 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.cert-overlay h3 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    z-index: 2;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    color: var(--text-primary);
+}
+
+.cert-overlay p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-primary);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 /* Abstract Gradients mimicking 'award' feel */
@@ -863,21 +1178,65 @@ footer a {
     min-height: 400px;
 }
 
-.pdf-icon-container {
+/* PDF Preview Link Wrapper */
+.pdf-preview-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+
+/* PDF Preview Container */
+.pdf-preview-container {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 250, 0.95) 100%);
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .pdf-preview-container {
+    transform: scale(1.02);
+}
+
+/* PDF Preview Object/Embed */
+.pdf-preview {
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+}
+
+/* PDF Fallback (shown when preview fails) */
+.pdf-fallback {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 3rem 2rem;
-    background: linear-gradient(135deg, rgba(74, 144, 226, 0.05) 0%, rgba(0, 0, 0, 0.2) 100%);
-    border-radius: 12px 12px 0 0;
-    position: relative;
+    gap: 1rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 240, 245, 0.95) 100%);
+    width: 100%;
+    height: 100%;
 }
 
-.pdf-icon-container svg {
-    color: var(--accent-blue);
-    opacity: 0.7;
-    margin-bottom: 1rem;
+.pdf-fallback svg {
+    color: rgba(74, 144, 226, 0.6);
+    opacity: 0.8;
+}
+
+.fallback-text {
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 500;
+    text-align: center;
 }
 
 .pdf-badge {
@@ -891,6 +1250,8 @@ footer a {
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.05em;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .pdf-actions {
@@ -1042,6 +1403,699 @@ footer a {
     }
 }
 
+/* ============================================
+   PROFESSIONAL UI ANIMATIONS & EFFECTS
+   ============================================ */
+
+/* 1. SCROLL-BASED REVEAL ANIMATIONS */
+.fade-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+        transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered delays for gallery items */
+.fade-on-scroll.delay-1 {
+    transition-delay: 100ms;
+}
+
+.fade-on-scroll.delay-2 {
+    transition-delay: 200ms;
+}
+
+.fade-on-scroll.delay-3 {
+    transition-delay: 300ms;
+}
+
+/* 2. CARD HOVER MICRO-INTERACTIONS */
+.glass-card {
+    transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 12px 40px rgba(74, 144, 226, 0.25),
+        0 0 20px rgba(144, 19, 254, 0.15);
+}
+
+/* Enhanced gallery item hover */
+.gallery-item {
+    position: relative;
+    transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover {
+    transform: translateY(-6px) scale(1.01);
+}
+
+/* 3. IMAGE FOCUS EFFECT */
+.gallery-item img {
+    transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.03);
+}
+
+/* Image overlay effect */
+.gallery-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.3) 100%);
+    opacity: 0;
+    transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    border-radius: 12px;
+    z-index: 1;
+}
+
+.gallery-item:hover::before {
+    opacity: 1;
+}
+
+/* Text overlay sharpening on hover */
+.gallery-caption {
+    position: relative;
+    z-index: 2;
+    transition: opacity 280ms ease;
+}
+
+.gallery-item:hover .gallery-caption {
+    opacity: 1;
+}
+
+/* 4. CERTIFICATE CARD ENHANCEMENTS */
+.cert-card {
+    transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cert-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 12px 40px rgba(74, 144, 226, 0.25),
+        0 0 20px rgba(144, 19, 254, 0.15);
+}
+
+/* Certificate image zoom on hover */
+.cert-visual-image img {
+    transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cert-card:hover .cert-visual-image img {
+    transform: scale(1.03);
+}
+
+/* 5. SECTION DIVIDER ANIMATED EFFECT */
+.section-title {
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(74, 144, 226, 0.6) 25%,
+            rgba(144, 19, 254, 0.6) 75%,
+            transparent 100%);
+    transition: width 800ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-title.visible::after {
+    width: 200px;
+}
+
+.gallery-group-title {
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.gallery-group-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+            rgba(74, 144, 226, 0.5) 0%,
+            rgba(144, 19, 254, 0.3) 100%);
+    transition: width 700ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-group-title.visible::after {
+    width: 120px;
+}
+
+/* 6. PDF CARD ENHANCEMENTS */
+.gallery-item-pdf {
+    transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item-pdf:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 12px 40px rgba(74, 144, 226, 0.25);
+}
+
+/* PDF preview subtle zoom */
+.pdf-preview-container {
+    overflow: hidden;
+    transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery-item-pdf:hover .pdf-preview-container {
+    transform: scale(1.02);
+}
+
+/* 7. BUTTON MICRO-INTERACTIONS */
+.pdf-btn {
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pdf-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+/* 8. SMOOTH SECTION TRANSITIONS */
+.content-section {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.content-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 9. ACCESSIBILITY - REDUCED MOTION SUPPORT */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .fade-on-scroll {
+        opacity: 1;
+        transform: none;
+    }
+
+    .hover-lift:hover,
+    .gallery-item:hover,
+    .cert-card:hover,
+    .gallery-item-pdf:hover {
+        transform: none;
+    }
+
+    .gallery-item:hover img,
+    .cert-card:hover .cert-visual-image img {
+        transform: none;
+    }
+
+    .section-title::after,
+    .gallery-group-title::after {
+        width: 120px;
+        transition: none;
+    }
+}
+
+/* 10. SUBTLE GLOW EFFECTS */
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Enhanced focus states for accessibility */
+.glass-card:focus-visible {
+    outline: 2px solid rgba(74, 144, 226, 0.6);
+    outline-offset: 4px;
+}
+
+/* ============================================
+   EDUCATION, SKILLS & CONTACT SECTIONS
+   ============================================ */
+
+/* Education Section */
+.education-card {
+    overflow: hidden;
+}
+
+.education-image-wrapper {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.education-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.education-card:hover .education-image {
+    transform: scale(1.02);
+}
+
+.education-item {
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.education-item h3 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+}
+
+.education-status {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+/* Responsive adjustments for education image */
+@media (max-width: 768px) {
+    .education-image {
+        max-height: 200px;
+    }
+
+    .education-image-wrapper {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Skills Section */
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+}
+
+.skills-list li {
+    padding: 0.5rem 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.skills-list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: rgba(74, 144, 226, 0.6);
+    font-size: 1.2rem;
+}
+
+.glass-card h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-family: var(--font-heading);
+}
+
+/* Contact Information */
+.contact-info {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.contact-detail svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.contact-detail a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-detail a:hover {
+    color: rgba(74, 144, 226, 0.8);
+}
+
+/* About Text Spacing */
+.about-text {
+    line-height: 1.8;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.about-text br {
+    display: block;
+    content: "";
+    margin-top: 0.5rem;
+}
+
 .hidden {
     display: none !important;
+}
+
+/* ============================================
+   RESPONSIVE & MOBILE OPTIMIZATION
+   ============================================ */
+
+/* 1. Global Touch & Mobile Fixes */
+@media (hover: none) and (pointer: coarse) {
+
+    /* Disable hover-only effects on touch devices to prevent "sticking" */
+    .hover-lift:hover,
+    .gallery-item:hover,
+    .cert-card:hover,
+    .pdf-btn:hover {
+        transform: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Ensure tap targets are large enough */
+    button,
+    .nav-links a,
+    .btn-contact,
+    .pdf-btn,
+    .lang-btn,
+    .contact-icon-link {
+        min-height: 44px;
+        min-width: 44px;
+        /* Basic touch target size */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        padding: 0.8rem;
+        /* larger touch area */
+    }
+}
+
+/* 2. Tablet & Smaller Laptops (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+
+/* 3. Tablets & Large Phones (max-width: 768px) */
+@media (max-width: 768px) {
+    .hero-section {
+        padding-top: 120px;
+        /* Reduced from 160px as nav is now compact */
+        padding-bottom: 4rem;
+        min-height: auto;
+    }
+
+    /* Mobile Navigation Reset */
+    .glass-nav {
+        width: 95%;
+        padding: 0.8rem 1.5rem;
+        top: 10px;
+        flex-direction: row;
+        /* Keep row for Logo + Hamburger */
+        align-items: center;
+        justify-content: space-between;
+        gap: 0;
+        height: 70px;
+        /* Fixed height for consistency */
+    }
+
+    .glass-nav.scrolled {
+        width: 100%;
+        top: 0;
+        border-radius: 0;
+        padding: 0.5rem 1.5rem;
+        height: 60px;
+    }
+
+    /* Show Hamburger */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Mobile Menu Drawer */
+    .nav-menu {
+        position: fixed;
+        inset: 0;
+        /* Top, Right, Bottom, Left 0 */
+        width: 100vw;
+        height: 100vh;
+        background: rgba(11, 11, 20, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Smooth eased */
+        z-index: 1000;
+        /* Behind hamburger (1001) but above page */
+        padding: 2rem;
+    }
+
+    .nav-menu.active {
+        transform: translateX(0);
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        width: 100%;
+    }
+
+    .nav-link {
+        font-size: 1.8rem;
+        /* Large Thumb Targets */
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    /* Staggered text reveal when menu opens */
+    .nav-menu.active .nav-link {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav-menu.active .nav-link:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    .nav-menu.active .nav-link:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    .nav-menu.active .nav-link:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+
+    .nav-menu.active .nav-link:nth-child(4) {
+        transition-delay: 0.4s;
+    }
+
+    .nav-menu.active .nav-link:nth-child(5) {
+        transition-delay: 0.5s;
+    }
+
+    .nav-actions {
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 1rem;
+        opacity: 0;
+        transition: opacity 0.4s ease 0.6s;
+    }
+
+    .nav-menu.active .nav-actions {
+        opacity: 1;
+    }
+
+    /* Hamburger Animation States */
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+        /* Force single column */
+        gap: 2rem;
+    }
+
+    .cert-visual,
+    .cert-visual-image {
+        height: auto;
+        min-height: 250px;
+    }
+
+    /* Fix timeline vertical spacing */
+    .timeline-item {
+        margin-bottom: 2rem;
+    }
+}
+
+/* 4. Mobile Phones (max-width: 480px) */
+@media (max-width: 480px) {
+    html {
+        scroll-padding-top: 180px;
+        /* Adjust for larger nav height */
+    }
+
+    /* Layout Resets */
+    .container {
+        padding: 0 1rem;
+        width: 100%;
+    }
+
+    .content-section {
+        padding: 4rem 1rem;
+    }
+
+    /* Grid Resets - Force Vertical Stack */
+    .grid-3,
+    .gallery-grid,
+    .contact-icons {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* Typography Scaling */
+    h1 {
+        font-size: 2.5rem;
+        /* clamp fallback */
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    /* Images & Cards */
+    .profile-photo {
+        width: 160px;
+        height: 160px;
+    }
+
+    .gallery-item img,
+    .cert-visual-image img {
+        max-height: 250px;
+    }
+
+    /* Navigation Adjustments for small screens */
+    .logo {
+        margin-bottom: 0.5rem;
+    }
+
+    .nav-actions {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* PDF Preview Fixes */
+    .pdf-preview-container {
+        height: 250px;
+        /* shorter on mobile */
+    }
+
+    .pdf-actions {
+        flex-direction: column;
+    }
+
+    .pdf-btn {
+        width: 100%;
+    }
+
+    /* Contact Icons Layout */
+    .contact-icons {
+        flex-direction: row;
+        /* Keep row but wrap if needed */
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+}
+
+/* 5. Small Mobile (max-width: 360px) */
+@media (max-width: 360px) {
+    .nav-links {
+        gap: 0.8rem;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .manifesto {
+        padding: 1.5rem;
+        font-size: 1rem;
+    }
 }
